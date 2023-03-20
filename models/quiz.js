@@ -2,9 +2,7 @@
 
 module.exports = (sequelize, Sequelize) => {
     const Quiz = sequelize.define('quiz', {
-        image: {
-            type: Sequelize.STRING,
-        },
+        
         nomor: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -29,10 +27,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         categoryId: {
             type: Sequelize.INTEGER,
-        },
-        pembahasan: {
-            type: Sequelize.STRING,
-        },
+        }
     });
     return Quiz;
 }
