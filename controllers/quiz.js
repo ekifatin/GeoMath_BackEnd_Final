@@ -71,19 +71,17 @@ exports.delete = async (req, res) => {
         })
     }
 }
-exports.getByCategory = async (req, res) => {
-    const category  = req.params.category
+exports.getByCategoryId = async (req, res) => {
+    const id = req.params.id
     const quizzes = await Quiz.findAll({
-        where : {
-            category: {
-                [Op.like]: `%${category}%`
-            }
+        where: {
+            categoryId: id
         }
     })
     res.json({
-        message: `quiz retrived successfully with categoryId=${category}`,
-        data: quizzes
-    })
+        message: `Quizzes retrieved successfully woth categoryId=${id}.`,
+        data: quizzes,
+    });
 }
 exports.findOne = async (req, res) => {
     const id = req.params.id

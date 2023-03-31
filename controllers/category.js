@@ -19,9 +19,6 @@ exports.create = async (req, res) => {
 exports.getAll = async (req, res) => {
     try {
         const category = await Category.findAll({
-            include: [{
-                model: Soal
-            }],
         });
         res.json({
             message: "Category retrieved successfully",
@@ -37,12 +34,8 @@ exports.getAll = async (req, res) => {
 exports.findOne = async (req, res) => {
     const id = req.params.id
     try {
-        const soal = await Soal.findByPk(id, { 
-            rejectOnEmpty: true,
-            include: [{
-                model: Soal,
-                as: 'soals'
-            }], 
+        const soal = await Category.findByPk(id, { 
+            rejectOnEmpty: true
         })
         res.json({
             message: `category retrived successfully with id=${id}`,
